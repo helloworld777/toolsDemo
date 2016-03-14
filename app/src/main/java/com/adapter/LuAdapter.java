@@ -16,12 +16,53 @@ public abstract class LuAdapter<T> extends BaseAdapter{
 		this.datas=datas;
 		this.mItemLayoutId=mItemLayoutId;
 	}
+	public void replaceAll(List<T> elem) {
+		datas.clear();
+		datas.addAll(elem);
+		notifyDataSetChanged();
+	}
+	public void add(T elem) {
+		datas.add(elem);
+		notifyDataSetChanged();
+	}
+
+	public void addAll(List<T> elem) {
+		datas.addAll(elem);
+		notifyDataSetChanged();
+	}
+
+	public void set(T oldElem, T newElem) {
+		set(datas.indexOf(oldElem), newElem);
+	}
+
+	public void set(int index, T elem) {
+		datas.set(index, elem);
+		notifyDataSetChanged();
+	}
+
+	public void remove(T elem) {
+		datas.remove(elem);
+		notifyDataSetChanged();
+	}
+
+	public void remove(int index) {
+		datas.remove(index);
+		notifyDataSetChanged();
+	}
 	@Override
 	public int getCount() {
 		
 		return datas.size();
 	}
+	public boolean contains(T elem) {
+		return datas.contains(elem);
+	}
 
+	/** Clear data list */
+	public void clear() {
+		datas.clear();
+		notifyDataSetChanged();
+	}
 	@Override
 	public T getItem(int position) {
 		// TODO Auto-generated method stub
