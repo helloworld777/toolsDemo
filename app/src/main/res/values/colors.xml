@@ -7,4 +7,7 @@
 
     <color name="translate">#00000000</color>
     <color name="translate_">#60000000</color>
+
+    <color name="main_color">#e2dbb1</color>
+    <color name="f0">#f0f0f0</color>
 </resources>

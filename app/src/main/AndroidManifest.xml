@@ -18,6 +18,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.lxl.lu.ui.activityani.FiveActivity"></activity>
+        <activity android:name="com.lxl.lu.ui.activityani.MainActivity"></activity>
+        <activity android:name="com.lxl.lu.ui.activityani.FourActivity"></activity>
+        <activity android:name="com.lxl.lu.ui.activityani.SecondActivity"></activity>
+        <activity android:name="com.lxl.lu.ui.activityani.ThreeActivity"></activity>
+        <activity android:name="com.lxl.lu.ui.activitylol.SampleLolMainActivity"></activity>
     </application>
 
 </manifest>

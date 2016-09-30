@@ -1,12 +1,9 @@
 package com.lxl.lu.annotation;
 
-import java.lang.annotation.Annotation;
+import android.app.Activity;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
-
-import android.app.Activity;
-import android.view.View;
 
 public class ViewInjectUtil {
 	private static final String METHOD_SET_CONTENEVIEW = "setContentView";
@@ -60,7 +57,7 @@ public class ViewInjectUtil {
 		injectViews(activity);
 		injectEvents(activity);
 	}
-	private static void injectEvents(Activity activity){
+	private static void injectEvents(Activity activity){}/*{
 		Class<? extends Activity> clazz=activity.getClass();
 		Method[] methods=clazz.getMethods();
 		for(Method method:methods){
@@ -78,7 +75,8 @@ public class ViewInjectUtil {
 					
 					try {
 						Method aMethod=annotationType.getDeclaredMethod("value");
-						int[] viewIds=(int[])aMethod.invoke(annotation, null);
+						Object o=aMethod.invoke(annotation, null);
+						Integer[] viewIds=(Integer[])o;
 						DynamicHandler handler=new DynamicHandler(activity);
 						
 						handler.addMethod(methodName, method);
@@ -100,5 +98,5 @@ public class ViewInjectUtil {
 			}
 			
 		}
-	}
+	}*/
 }

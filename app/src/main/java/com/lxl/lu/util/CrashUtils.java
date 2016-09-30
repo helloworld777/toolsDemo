@@ -131,7 +131,7 @@ public class CrashUtils implements UncaughtExceptionHandler{
 //				if (!dir.exists()) {
 //					dir.mkdirs();
 //				}
-				FileOutputStream fos = new FileOutputStream(FileUtil.getSDCardPath() + fileName);
+				FileOutputStream fos = new FileOutputStream(SDCardUtils.getSDCardPath() + fileName);
 				fos.write(sb.toString().getBytes());
 				fos.close();
 			}

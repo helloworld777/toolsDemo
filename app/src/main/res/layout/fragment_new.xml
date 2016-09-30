@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.lxl.lu.ui.widget.MainRelactiveLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rlRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="-50dp"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="fresh"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rlRefresh"
+        android:paddingTop="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="5dp">
+        <ImageView
+            android:id="@+id/imgLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/header"/>
+        <ImageView
+            android:id="@+id/imgRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/search"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/imgLeft"
+            android:layout_toLeftOf="@+id/imgRight">
+            <TextView
+                android:id="@+id/title1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/main_color"
+                android:drawableBottom="@drawable/index"
+                android:text="aaaa"/>
+            <TextView
+                android:id="@+id/title2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:visibility="gone"
+                android:textColor="@color/main_color"
+                android:drawableBottom="@drawable/index"
+                android:text="bbb"/>
+        </LinearLayout>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rl1"
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></android.support.v4.view.ViewPager>
+
+        <com.lxl.lu.ui.widget.viewpagerindicator.CirclePageIndicator
+            android:id="@+id/indicator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+
+    <HorizontalScrollView
+        android:id="@+id/hs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl1">
+        <include layout="@layout/title_index" android:id="@+id/index1"/>
+        <include layout="@layout/title_index" android:id="@+id/index2"/>
+        <include layout="@layout/title_index" android:id="@+id/index3"/>
+        <include layout="@layout/title_index" android:id="@+id/index4"/>
+        <include layout="@layout/title_index" android:id="@+id/index5"/>
+        <include layout="@layout/title_index" android:id="@+id/index6"/>
+
+    </HorizontalScrollView>
+
+    <ListView
+
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/hs"></ListView>
+</com.lxl.lu.ui.widget.MainRelactiveLayout>
