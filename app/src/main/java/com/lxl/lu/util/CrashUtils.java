@@ -1,10 +1,6 @@
 package com.lxl.lu.util;
 
 import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.os.Build;
 import android.os.Environment;
 import android.os.Looper;
 import android.util.Log;
@@ -14,19 +10,18 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.io.Writer;
 import java.lang.Thread.UncaughtExceptionHandler;
-import java.lang.reflect.Field;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CrashHandler implements UncaughtExceptionHandler{
+public class CrashUtils implements UncaughtExceptionHandler{
 
-	public static final String TAG = "CrashHandler";
+	public static final String TAG = "CrashUtils";
 	
 	private UncaughtExceptionHandler mDefaultHandler;
-	private static CrashHandler INSTANCE = new CrashHandler();
+	private static CrashUtils INSTANCE = new CrashUtils();
 	private Context mContext;
 	private Map<String, String> infos = new HashMap<String, String>();
 
@@ -34,10 +29,10 @@ public class CrashHandler implements UncaughtExceptionHandler{
 	
 	public String path;
 
-	private CrashHandler() {
+	private CrashUtils() {
 	}
 
-	public static CrashHandler getInstance() {
+	public static CrashUtils getInstance() {
 		return INSTANCE;
 	}
 
@@ -80,39 +75,28 @@ public class CrashHandler implements UncaughtExceptionHandler{
 				Looper.loop();
 			}
 		}.start();
-		collectDeviceInfo(mContext);
 		saveCrashInfo2File(ex);
 		return true;
 	}
-	
-	/**
-	 * @param ctx
-	 */
-	public void collectDeviceInfo(Context ctx) {
-		try {
-			PackageManager pm = ctx.getPackageManager();
-			PackageInfo pi = pm.getPackageInfo(ctx.getPackageName(), PackageManager.GET_ACTIVITIES);
-			if (pi != null) {
-				String versionName = pi.versionName == null ? "null" : pi.versionName;
-				String versionCode = pi.versionCode + "";
-				infos.put("versionName", versionName);
-				infos.put("versionCode", versionCode);
-			}
-		} catch (NameNotFoundException e) {
-			Log.e(TAG, "an error occured when collect package info", e);
-		}
-		Field[] fields = Build.class.getDeclaredFields();
-		for (Field field : fields) {
-			try {
-				field.setAccessible(true);
-				infos.put(field.getName(), field.get(null).toString());
-				Log.d(TAG, field.getName() + " : " + field.get(null));
-			} catch (Exception e) {
-				Log.e(TAG, "an error occured when collect crash info", e);
-			}
-		}
-	}
 
+	/**
+	 * 获取APP崩溃异常报告
+	 *
+	 * @param ex
+	 * @return
+	 */
+	private String getCrashReport(Throwable ex) {
+//        PackageInfo pinfo = AppUtils.getPackageInfo(context);
+		StringBuffer exceptionStr = new StringBuffer();
+//        exceptionStr.append("Version: " + pinfo.versionName + "(" + pinfo.versionCode + ")\n");
+		exceptionStr.append("Android: " + android.os.Build.VERSION.RELEASE + "(" + android.os.Build.MODEL + ")\n");
+		exceptionStr.append("Exception: " + ex.getMessage() + "\n");
+		StackTraceElement[] elements = ex.getStackTrace();
+		for (int i = 0; i < elements.length; i++) {
+			exceptionStr.append(elements[i].toString() + "\n");
+		}
+		return exceptionStr.toString();
+	}
 	/**
 	 *
 	 * @param ex
@@ -147,7 +131,7 @@ public class CrashHandler implements UncaughtExceptionHandler{
 //				if (!dir.exists()) {
 //					dir.mkdirs();
 //				}
-				FileOutputStream fos = new FileOutputStream(FileUtil.getCarshPath() + fileName);
+				FileOutputStream fos = new FileOutputStream(FileUtil.getSDCardPath() + fileName);
 				fos.write(sb.toString().getBytes());
 				fos.close();
 			}
