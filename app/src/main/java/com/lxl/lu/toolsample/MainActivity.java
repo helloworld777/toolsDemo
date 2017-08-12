@@ -11,6 +11,11 @@ import android.view.View;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ContentView;
 import com.lidroid.xutils.view.annotation.event.OnClick;
+import com.lxl.lu.util.CrashUtils;
+import com.lxl.lu.util.file.IOUtil;
+import com.lxl.lu.util.file.SDCardUtils;
+
+import java.io.IOException;
 
 @ContentView(R.layout.activity_main)
 public class MainActivity extends AppCompatActivity {
@@ -29,6 +34,12 @@ public class MainActivity extends AppCompatActivity {
 //                        .setAction("Action", null).show();
 //            }
 //        });
+        CrashUtils.getInstance().init(this);
+        try {
+            IOUtil.writerString(SDCardUtils.getSDCardPath() + "a.txt","sssssssssss");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     @OnClick({R.id.btn1})
     public void onclick(View view){

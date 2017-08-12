@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
         initView();
 
         initListener();
+        String a=null;
+        a.toString();
     }
 
     /**

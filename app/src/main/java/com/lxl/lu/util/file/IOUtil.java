@@ -28,6 +28,10 @@ public class IOUtil {
     public static void writerString(String filePath, String data) throws IOException{
         BufferedWriter out = null;
         try {
+            File file=new File(filePath);
+            if (!file.exists()){
+                file.createNewFile();
+            }
             out = new BufferedWriter(new FileWriter(filePath, true));
             out.write(data);
             out.newLine();

@@ -5,8 +5,12 @@ import android.os.Environment;
 import android.os.Looper;
 import android.util.Log;
 
+import com.lxl.lu.toolsample.R;
+import com.lxl.lu.util.file.FileUtils;
+import com.lxl.lu.util.file.IOUtil;
 import com.lxl.lu.util.file.SDCardUtils;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -27,10 +31,9 @@ public class CrashUtils implements UncaughtExceptionHandler{
 	private Context mContext;
 	private Map<String, String> infos = new HashMap<String, String>();
 
-	private DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
+	private DateFormat formatter = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
 	
-	public String path;
-
+	private  static String crashDri = "/sdcard/s%/crash/";
 	private CrashUtils() {
 	}
 
@@ -39,9 +42,10 @@ public class CrashUtils implements UncaughtExceptionHandler{
 	}
 
 	public void init(Context context) {
-		mContext = context;
+		mContext = context.getApplicationContext();
 		mDefaultHandler = Thread.getDefaultUncaughtExceptionHandler();
 		Thread.setDefaultUncaughtExceptionHandler(this);
+		crashDri="/sdcard/"+(context.getText(R.string.app_name)+"/crash/");
 	}
 
 	/**
@@ -123,19 +127,19 @@ public class CrashUtils implements UncaughtExceptionHandler{
 		printWriter.close();
 		String result = writer.toString();
 		sb.append(result);
+		LogUtil.d("aaaa",sb.toString());
 		try {
-			long timestamp = System.currentTimeMillis();
+//			long timestamp = System.currentTimeMillis();
 			String time = formatter.format(new Date());
-			String fileName = "LauncherException-" + time + "-" + timestamp + ".log";
+			String fileName = time+".log";
 			if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-//				String path = "/sdcard/lu/moneymanager/crash/";
-//				File dir = new File(path);
-//				if (!dir.exists()) {
-//					dir.mkdirs();
-//				}
-				FileOutputStream fos = new FileOutputStream(SDCardUtils.getSDCardPath() + fileName);
-				fos.write(sb.toString().getBytes());
-				fos.close();
+				File dir = new File(crashDri);
+				if (!dir.exists()) {
+					dir.mkdirs();
+				}
+				String crashFile=new File(dir,fileName).getAbsolutePath();
+				IOUtil.writerString(crashFile,sb.toString());
+				LogUtil.d("aaaa","bbbbbbbbbbbbbbbbbbbbbb");
 			}
 			return fileName;
 		} catch (Exception e) {
