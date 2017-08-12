@@ -1,4 +1,6 @@
-package com.lxl.lu.util;
+package com.lxl.lu.util.string;
+
+import com.lxl.lu.util.file.FileUtils;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -15,9 +17,6 @@ import javax.crypto.spec.SecretKeySpec;
 
 /**
  * <pre>
- *     author: Blankj
- *     blog  : http://blankj.com
- *     time  : 2016/8/2
  *     desc  : 加密解密相关的工具类
  * </pre>
  */

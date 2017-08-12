@@ -5,10 +5,13 @@ import android.content.Context;
 import android.graphics.PixelFormat;
 import android.os.Build;
 import android.os.CountDownTimer;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class TopNoticeDialog {
@@ -22,13 +25,12 @@ public class TopNoticeDialog {
     private static CountDown mCountDown;
     private static TextView tip_txt = null;
     private final static int COUNTDOWN_TIME = 1000;
-
     private static WindowManager wm;
     private final static WindowManager.LayoutParams mParams = new WindowManager.LayoutParams();
-
+    private static Toast toast;
+    private Handler handler=new Handler(Looper.getMainLooper());
     private static void createToast(Context context, CharSequence text){
         wm= (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-
         final WindowManager.LayoutParams params = mParams;
         params.height = WindowManager.LayoutParams.WRAP_CONTENT;
         params.width = WindowManager.LayoutParams.WRAP_CONTENT;
@@ -55,19 +57,47 @@ public class TopNoticeDialog {
         wm.addView(tip_txt, mParams);
         startCountDown();
     }
-
-
     /**
-     * 显示Toast
+     * 显示一个自定义的Toast
      *
      * @param context
      * @param text
      */
     public static void showToast(Context context, CharSequence text) {
         createToast(context, text);
-
     }
 
+    /**
+     * 显示一个自定义的Toast
+     *
+     * @param context
+     * @param res 字符串资源文件
+     */
+    public static void showToast(Context context, int res) {
+        createToast(context, context.getText(res));
+    }
+    /**
+     * 显示一个自定义的Toast
+     *
+     * @param context
+     * @param text 字符串
+     *             是否自定义
+     */
+    public static void showToast(Context context, CharSequence text,boolean isCustom) {
+        if (isCustom){
+            createToast(context, text);
+        }else{
+            showSystemToast(context,text);
+        }
+    }
+    public static void showSystemToast(Context context,CharSequence text){
+        if (toast!=null){
+            toast.setText(text);
+        }else{
+            toast=Toast.makeText(context,text,Toast.LENGTH_SHORT);
+        }
+        toast.show();
+    }
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
     public static void closeDialog(boolean setNull) {

@@ -28,6 +28,10 @@ import android.renderscript.RenderScript;
 import android.renderscript.ScriptIntrinsicBlur;
 import android.view.View;
 
+import com.lxl.lu.util.file.FileUtils;
+import com.lxl.lu.util.string.ConvertUtils;
+import com.lxl.lu.util.string.StringUtils;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;
@@ -40,17 +44,18 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import static android.os.Build.VERSION.SDK_INT;
+import static android.os.Build.VERSION_CODES.KITKAT;
+
 /**
  * <pre>
- *     author: Blankj
- *     blog  : http://blankj.com
- *     time  : 2016/8/12
- *     desc  : 图片相关工具类
+ *
+ *     desc  : Bitmap相关工具类
  * </pre>
  */
-public class ImageUtils {
+public class BitmapUtils {
 
-    private ImageUtils() {
+    private BitmapUtils() {
         throw new UnsupportedOperationException("u can't instantiate me...");
     }
 
@@ -343,6 +348,18 @@ public class ImageUtils {
         return BitmapFactory.decodeFileDescriptor(fd, null, options);
     }
 
+    /**
+     * 获取bitmap大小
+     * @param bitmap
+     * @return
+     */
+    static int getBitmapBytes(Bitmap bitmap) {
+        int result = SDK_INT >= KITKAT ? bitmap.getAllocationByteCount() : bitmap.getByteCount();
+        if (result < 0) {
+            throw new IllegalStateException("Negative size: " + bitmap);
+        }
+        return result;
+    }
     /**
      * 缩放图片
      *
@@ -667,7 +684,7 @@ public class ImageUtils {
         paint.setColorFilter(filter);
         canvas.scale(scale, scale);
         canvas.drawBitmap(scaleBitmap, 0, 0, paint);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+        if (SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             scaleBitmap = renderScriptBlur(context, scaleBitmap, radius);
         } else {
             scaleBitmap = stackBlur(scaleBitmap, (int) radius, recycle);

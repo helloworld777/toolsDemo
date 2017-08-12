@@ -1,12 +1,11 @@
 package com.lxl.lu.util;
 
+import com.lxl.lu.util.string.StringUtils;
+
 import java.util.regex.Pattern;
 
 /**
  * <pre>
- *     author: Blankj
- *     blog  : http://blankj.com
- *     time  : 2016/8/2
  *     desc  : 正则相关工具类
  * </pre>
  */

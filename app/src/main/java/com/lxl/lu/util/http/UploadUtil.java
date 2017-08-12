@@ -1,4 +1,4 @@
-package com.lxl.lu.util;
+package com.lxl.lu.util.http;
 
 import android.util.Log;
 

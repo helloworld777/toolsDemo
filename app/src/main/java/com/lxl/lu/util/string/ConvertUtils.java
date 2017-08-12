@@ -1,4 +1,4 @@
-package com.lxl.lu.util;
+package com.lxl.lu.util.string;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -10,6 +10,9 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 
+import com.lxl.lu.util.ConstUtils;
+import com.lxl.lu.util.file.FileUtils;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -20,9 +23,7 @@ import java.util.Locale;
 
 /**
  * <pre>
- *     author: Blankj
- *     blog  : http://blankj.com
- *     time  : 2016/8/13
+ *
  *     desc  : 转换相关工具类
  * </pre>
  */

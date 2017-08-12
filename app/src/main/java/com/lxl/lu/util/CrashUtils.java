@@ -5,6 +5,8 @@ import android.os.Environment;
 import android.os.Looper;
 import android.util.Log;
 
+import com.lxl.lu.util.file.SDCardUtils;
+
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;

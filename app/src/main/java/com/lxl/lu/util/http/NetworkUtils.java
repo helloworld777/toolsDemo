@@ -1,5 +1,6 @@
-package com.lxl.lu.util;
+package com.lxl.lu.util.http;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -64,6 +65,7 @@ public class NetworkUtils {
      * @param context 上下文
      * @return NetworkInfo
      */
+    @SuppressLint("MissingPermission")
     private static NetworkInfo getActiveNetworkInfo(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -113,6 +115,7 @@ public class NetworkUtils {
      * @param context 上下文
      * @return {@code true}: 连接<br>{@code false}: 未连接
      */
+    @SuppressLint("MissingPermission")
     public static boolean isWifiConnected(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context
                 .getSystemService(Context.CONNECTIVITY_SERVICE);

@@ -1,4 +1,6 @@
-package com.lxl.lu.util;
+package com.lxl.lu.util.file;
+
+import com.lxl.lu.util.LogUtil;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -8,10 +10,14 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.Reader;
+import java.io.Writer;
 import java.nio.channels.FileChannel;
 
 /**
@@ -19,25 +25,16 @@ import java.nio.channels.FileChannel;
  */
 public class IOUtil {
 
-    public static void writerString(String filename, String data) throws IOException{
-//        Map<String,Object> map= HashMap.new
+    public static void writerString(String filePath, String data) throws IOException{
         BufferedWriter out = null;
-
         try {
-            out = new BufferedWriter(new FileWriter(filename, true));
+            out = new BufferedWriter(new FileWriter(filePath, true));
             out.write(data);
+            out.newLine();
+            out.flush();
         } finally {
-            if (out != null) {
-                try {
-                    out.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-            }
-
+            closeStream(out);
         }
-
     }
 
     public static InputStream copyInputStream(InputStream inputStream) throws IOException {
@@ -63,29 +60,56 @@ public class IOUtil {
         }
         return tStringBuffer.toString();
     }
+    /**
+     *
+     */
+    public static void closeStream(Object stream){
+        if(stream==null){return;}
+        try {
+            if(stream instanceof Reader){
+                ((Reader)stream).close();
+            }else if(stream instanceof Writer){
+                ((Writer)stream).close();
+            }else if(stream instanceof InputStream){
+                ((InputStream)stream).close();
+            }else if(stream instanceof OutputStream){
+                ((OutputStream)stream).close();
+            }
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public static String readerString(String filename) throws IOException{
+//      Map<String,Object> map= HashMap.new
+        BufferedReader read = null;
+        StringBuffer result=new StringBuffer();
+        try {
+            read = new BufferedReader(new FileReader(filename));
+            String data=null;
+
+            while((data=read.readLine())!=null){
+                result.append(data);
+            }
+
+
+        } finally {
+            closeStream(read);
+        }
+        return result.toString();
+
+    }
     public static void fileCopy(File in, File out) throws IOException {
 
         FileChannel inChannel = new FileInputStream(in).getChannel();
 
         FileChannel outChannel = new FileOutputStream(out).getChannel();
-
         try {
-
-// inChannel.transferTo(0, inChannel.size(), outChannel); // original
-
-
-// magic number for Windows, 64Mb - 32Kb)
-
             int maxCount = (64 * 1024 * 1024) - (32 * 1024);
-
             long size = inChannel.size();
             long position = 0;
-
             while (position < size) {
-
                 position += inChannel.transferTo(position, maxCount, outChannel);
-
             }
 
         } finally {

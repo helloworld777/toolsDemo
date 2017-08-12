@@ -1,9 +1,12 @@
-package com.lxl.lu.util;
+package com.lxl.lu.util.file;
 
 import android.annotation.TargetApi;
 import android.os.Build;
 import android.os.Environment;
 import android.os.StatFs;
+
+import com.lxl.lu.util.file.FileUtils;
+import com.lxl.lu.util.string.ConvertUtils;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;

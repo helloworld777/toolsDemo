@@ -3,11 +3,14 @@ package com.lxl.lu.util;
 import android.content.Context;
 import android.os.Environment;
 
+import com.lxl.lu.util.file.FileUtils;
+import com.lxl.lu.util.string.StringUtils;
+
 import java.io.File;
 
 /**
  * <pre>
- *     desc  : 清除相关工具类
+ *     desc  : 清除app目录下相关工具类
  * </pre>
  */
 public class CleanUtils {

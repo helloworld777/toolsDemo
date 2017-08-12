@@ -1,4 +1,4 @@
-package com.lxl.lu.util;
+package com.lxl.lu.util.string;
 
 import android.os.Build;
 import android.text.Html;

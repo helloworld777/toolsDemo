@@ -1,4 +1,4 @@
-package com.lxl.lu.util;
+package com.lxl.lu.util.screen;
 
 import android.app.Activity;
 import android.app.KeyguardManager;
@@ -11,6 +11,8 @@ import android.util.TypedValue;
 import android.view.Surface;
 import android.view.View;
 import android.view.WindowManager;
+
+import com.lxl.lu.util.screen.BarUtils;
 
 /**
  * <pre>

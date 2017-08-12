@@ -1,4 +1,8 @@
-package com.lxl.lu.util;
+package com.lxl.lu.util.file;
+
+import com.lxl.lu.util.ConstUtils;
+import com.lxl.lu.util.file.FileUtils;
+import com.lxl.lu.util.string.StringUtils;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -24,7 +28,7 @@ import java.util.zip.ZipOutputStream;
  *     desc  : 压缩相关工具类
  * </pre>
  */
-public class ZipUtils implements ConstUtils{
+public class ZipUtils implements ConstUtils {
 
     private ZipUtils() {
         throw new UnsupportedOperationException("u can't instantiate me...");

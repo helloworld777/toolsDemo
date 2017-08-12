@@ -9,12 +9,9 @@ import android.text.TextUtils;
 import java.util.LinkedList;
 
 /**
- * <pre>
- *     author: Blankj
- *     blog  : http://blankj.com
- *     time  : 2016/9/23
- *     desc  : Activity相关工具类
- * </pre>
+ *
+ *  Activity相关工具类
+ *
  */
 public class ActivityUtils {
     private static LinkedList<Activity> activityStack;

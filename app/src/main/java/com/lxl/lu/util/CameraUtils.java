@@ -9,6 +9,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 
+import com.lxl.lu.util.string.StringUtils;
+
 import java.io.File;
 import java.io.IOException;
 

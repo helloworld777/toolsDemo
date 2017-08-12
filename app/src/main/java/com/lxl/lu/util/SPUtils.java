@@ -8,11 +8,14 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Map;
 
+/**
+ * SharedPreferences 封装辅助类
+ */
 public class SPUtils
 {  
     /** 
      */
-    public static final String FILE_NAME = "financeManager";
+    public static final String FILE_NAME = "sp_info";
 
     /** 
      *
@@ -80,30 +83,6 @@ public class SPUtils
  
         return null;  
     }
-//    public static <T>T get(Context context, String key, T defaultObject)
-//    {
-//        SharedPreferences sp = context.getSharedPreferences(FILE_NAME,
-//                Context.MODE_PRIVATE);
-//
-//        if (defaultObject instanceof String)
-//        {
-//            return sp.getString(key, (String) defaultObject);
-//        } else if (defaultObject instanceof Integer)
-//        {
-//            return sp.getInt(key, (Integer) defaultObject);
-//        } else if (defaultObject instanceof Boolean)
-//        {
-//            return sp.getBoolean(key, (Boolean) defaultObject);
-//        } else if (defaultObject instanceof Float)
-//        {
-//            return sp.getFloat(key, (Float) defaultObject);
-//        } else if (defaultObject instanceof Long)
-//        {
-//            return sp.getLong(key, (Long) defaultObject);
-//        }
-//
-//        return null;
-//    }
     /** 
      * @param context
      * @param key 

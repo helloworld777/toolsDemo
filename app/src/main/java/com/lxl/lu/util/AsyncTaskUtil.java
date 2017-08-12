@@ -4,21 +4,14 @@ import android.R.integer;
 import android.content.Context;
 import android.os.AsyncTask;
 
+/**
+ * AsyncTask 辅助类
+ */
 public class AsyncTaskUtil {
 
     private IAsyncTaskCallBack iAsyncTaskCallBack;
-    //	private Context context;
-    //private DialogLoading dialogLoading;
-
     public AsyncTaskUtil() {
-
     }
-
-    public AsyncTaskUtil(Context context) {
-//		this.context=context;
-       // dialogLoading = new DialogLoading(context);
-    }
-
     public AsyncTaskUtil setIAsyncTaskCallBack(IAsyncTaskCallBack iAsyncTaskCallBack) {
         this.iAsyncTaskCallBack = iAsyncTaskCallBack;
         return this;
@@ -31,29 +24,28 @@ public class AsyncTaskUtil {
     class MyTask extends AsyncTask<String, integer, Object> {
         @Override
         protected void onPreExecute() {
-//            if (dialogLoading != null && !dialogLoading.isShowing()) {
-//                dialogLoading.show();
-//            }
         }
 
         @Override
         protected Object doInBackground(String... arg0) {
-            return iAsyncTaskCallBack.doInBackground(arg0);
+            if (iAsyncTaskCallBack!=null){
+                return iAsyncTaskCallBack.doInBackground(arg0);
+            }
+            return null;
         }
 
         @Override
         protected void onPostExecute(Object result) {
-            iAsyncTaskCallBack.onPostExecute(result);
-//            if(dialogLoading!=null){
-//                dialogLoading.dismiss();
-//            }
+            if(iAsyncTaskCallBack!=null){
+                iAsyncTaskCallBack.onPostExecute(result);
+            }
+
         }
 
     }
 
     public interface IAsyncTaskCallBack {
-        public Object doInBackground(String... arg0);
-
-        public void onPostExecute(Object result);
+         Object doInBackground(String... arg0);
+         void onPostExecute(Object result);
     }
 }

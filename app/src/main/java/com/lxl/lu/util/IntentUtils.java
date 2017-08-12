@@ -10,13 +10,12 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.webkit.MimeTypeMap;
 
+import com.lxl.lu.util.file.FileUtils;
+
 import java.io.File;
 
 /**
  * <pre>
- *     author: Blankj
- *     blog  : http://blankj.com
- *     time  : 2016/9/23
  *     desc  : Intent相关工具类
  * </pre>
  */

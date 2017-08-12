@@ -1,5 +1,6 @@
-package com.lxl.lu.util;
+package com.lxl.lu.util.device;
 
+import android.annotation.SuppressLint;
 import android.app.PendingIntent;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -12,6 +13,8 @@ import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.util.Xml;
 
+import com.lxl.lu.util.string.StringUtils;
+
 import org.xmlpull.v1.XmlSerializer;
 
 import java.io.File;
@@ -22,9 +25,6 @@ import java.util.List;
 
 /**
  * <pre>
- *     author: Blankj
- *     blog  : http://blankj.com
- *     time  : 2016/8/2
  *     desc  : 手机相关工具类
  * </pre>
  */
@@ -87,6 +87,7 @@ public class PhoneUtils {
      * SubscriberId(IMSI) = 460030419724900<br>
      * VoiceMailNumber = *86<br>
      */
+    @SuppressLint("MissingPermission")
     public static String getPhoneStatus(Context context) {
         TelephonyManager tm = (TelephonyManager) context
                 .getSystemService(Context.TELEPHONY_SERVICE);
