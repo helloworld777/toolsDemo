@@ -10,4 +10,10 @@
 
     <color name="main_color">#e2dbb1</color>
     <color name="f0">#f0f0f0</color>
+
+
+
+    <drawable name="completedTaskBackground">#CCCCCC</drawable>
+
+    <drawable name="touchFeedback">#CFD8DC</drawable>
 </resources>

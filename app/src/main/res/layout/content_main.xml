@@ -13,11 +13,23 @@
     tools:context="com.lxl.lu.toolsample.MainActivity"
     tools:showIn="@layout/activity_main">
 
-
-    <Button
-        android:id="@+id/btn1"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/translate_"
-        android:text="activityAni" />
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="跳转acitity" />
+
+        <Button
+            android:id="@+id/btnGoogleMvp"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="跳转GoogleMvp" />
+    </LinearLayout>
+
 </RelativeLayout>

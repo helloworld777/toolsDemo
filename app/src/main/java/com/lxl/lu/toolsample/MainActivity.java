@@ -41,13 +41,19 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-    @OnClick({R.id.btn1})
+    @OnClick({R.id.btn1,R.id.btnGoogleMvp})
     public void onclick(View view){
         switch (view.getId()){
             case R.id.btn1:
-            startActivity(new Intent(this, com.lxl.lu.ui.activityani.MainActivity.class));
+                startActivity(com.lxl.lu.ui.activityani.MainActivity.class);
             break;
+            case R.id.btnGoogleMvp:
+                startActivity(com.lxl.lu.googlemvp.tasks.TasksActivity.class);
+                break;
         }
+    }
+    private void startActivity(Class clazz){
+        startActivity(new Intent(this, clazz));
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
