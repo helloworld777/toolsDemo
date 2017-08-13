@@ -6,13 +6,23 @@ ext {
   sourceCompatibilityVersion = JavaVersion.VERSION_1_7
   targetCompatibilityVersion = JavaVersion.VERSION_1_7
   supportLibrariesVersion = '25.1.0'
-
+  supportLibrary='26.0.0'
   dep = [
       androidPlugin      : 'com.android.tools.build:gradle:3.0.0-alpha8',
 
       supportV4          : "com.android.support:support-v4:$supportLibrariesVersion",
       supportAnnotations : "com.android.support:support-annotations:$supportLibrariesVersion",
-      junit              : 'junit:junit:4.10'
+      junit              : 'junit:junit:4.10',
+      android: [
+              'runtime': 'com.google.android:android:4.1.1.4'
+
+
+      ],
+      'support': [
+
+              'annotations': "com.android.support:support-annotations:${supportLibrary}",
+
+      ],
   ]
   supportLibraryVersion = '25.3.1'
   guavaVersion = '18.0'
