@@ -7,9 +7,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ContentView;
+import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 import com.lxl.lu.util.CrashUtils;
 import com.lxl.lu.util.file.IOUtil;
@@ -19,6 +22,9 @@ import java.io.IOException;
 
 @ContentView(R.layout.activity_main)
 public class MainActivity extends AppCompatActivity {
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,13 +41,13 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
         CrashUtils.getInstance().init(this);
-        try {
-            IOUtil.writerString(SDCardUtils.getSDCardPath() + "a.txt","sssssssssss");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//          //  IOUtil.writerString(SDCardUtils.getSDCardPath() + "a.txt","sssssssssss");
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
-    @OnClick({R.id.btn1,R.id.btnGoogleMvp})
+    @OnClick({R.id.btn1,R.id.btnGoogleMvp,R.id.btnAntoTest})
     public void onclick(View view){
         switch (view.getId()){
             case R.id.btn1:
@@ -49,6 +55,9 @@ public class MainActivity extends AppCompatActivity {
             break;
             case R.id.btnGoogleMvp:
                 startActivity(com.lxl.lu.googlemvp.tasks.TasksActivity.class);
+                break;
+            case R.id.btnAntoTest:
+                startActivity(AntoTestActivity.class);
                 break;
         }
     }

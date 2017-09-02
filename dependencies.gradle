@@ -7,6 +7,8 @@ ext {
   targetCompatibilityVersion = JavaVersion.VERSION_1_7
   supportLibrariesVersion = '25.1.0'
   supportLibrary='26.0.0'
+
+
   dep = [
       androidPlugin      : 'com.android.tools.build:gradle:3.0.0-alpha8',
 

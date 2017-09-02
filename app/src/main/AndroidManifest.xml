@@ -4,8 +4,9 @@
     package="com.lxl.lu.toolsample">
 
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RUN_INSTRUMENTATION" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -21,27 +22,33 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.lxl.lu.ui.activityani.FiveActivity"></activity>
-        <activity android:name="com.lxl.lu.ui.activityani.MainActivity"></activity>
-        <activity android:name="com.lxl.lu.ui.activityani.FourActivity"></activity>
-        <activity android:name="com.lxl.lu.ui.activityani.SecondActivity"></activity>
-        <activity android:name="com.lxl.lu.ui.activityani.ThreeActivity"></activity>
-        <activity android:name="com.lxl.lu.ui.activitylol.SampleLolMainActivity"></activity>
-
-        <activity android:name="com.lxl.lu.googlemvp.addedittask.AddEditTaskActivity"/>
-        <activity android:name="com.lxl.lu.googlemvp.taskdetail.TaskDetailActivity"/>
-        <activity android:name="com.lxl.lu.googlemvp.tasks.TasksActivity"
-            android:theme="@style/AppTheme.OverlapSystemBar"/>
-
+        <activity android:name="com.lxl.lu.ui.activityani.FiveActivity" />
+        <activity android:name="com.lxl.lu.ui.activityani.MainActivity" />
+        <activity android:name="com.lxl.lu.ui.activityani.FourActivity" />
+        <activity android:name="com.lxl.lu.ui.activityani.SecondActivity" />
+        <activity android:name="com.lxl.lu.ui.activityani.ThreeActivity" />
+        <activity android:name="com.lxl.lu.ui.activitylol.SampleLolMainActivity" />
+        <activity android:name="com.lxl.lu.googlemvp.addedittask.AddEditTaskActivity" />
+        <activity android:name="com.lxl.lu.googlemvp.taskdetail.TaskDetailActivity" />
+        <activity
+            android:name="com.lxl.lu.googlemvp.tasks.TasksActivity"
+            android:theme="@style/AppTheme.OverlapSystemBar" />
         <activity
             android:name="com.lxl.lu.googlemvp.statistics.StatisticsActivity"
             android:parentActivityName="com.lxl.lu.googlemvp.tasks.TasksActivity"
             tools:ignore="UnusedAttribute">
+
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.lxl.lu.googlemvp.tasks.TasksActivity" />
         </activity>
+        <activity
+            android:name=".AntoTestActivity"
+            android:label="@string/title_activity_anto_test"
+            android:theme="@style/AppThemeTools"></activity>
+
+        <uses-library android:name="android.test.runner" />
     </application>
 
 </manifest>

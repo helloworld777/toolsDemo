@@ -30,6 +30,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="跳转GoogleMvp" />
+        <Button
+            android:id="@+id/btnAntoTest"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="antotest" />
     </LinearLayout>
 
 </RelativeLayout>
