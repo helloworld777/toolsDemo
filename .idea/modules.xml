@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/tools-annotations/tools-annotations.iml" filepath="$PROJECT_DIR$/tools-annotations/tools-annotations.iml" />
-      <module fileurl="file://$PROJECT_DIR$/toolsDemo.iml" filepath="$PROJECT_DIR$/toolsDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Demo.iml" filepath="$PROJECT_DIR$/.idea/Demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Demo.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Demo.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Demo.buildSrc.iml" filepath="$PROJECT_DIR$/.idea/modules/Demo.buildSrc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tools-annotations/Demo.tools-annotations.iml" filepath="$PROJECT_DIR$/.idea/modules/tools-annotations/Demo.tools-annotations.iml" />
     </modules>
   </component>
 </project>
